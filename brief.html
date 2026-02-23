@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brief Comparativo — Migrazione isoladiminorca.com</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f1117;
+            --surface: #1a1d27;
+            --surface-2: #22263a;
+            --border: #2a2e42;
+            --text: #e4e6f0;
+            --text-muted: #8b8fa8;
+            --accent: #6c5ce7;
+            --accent-soft: rgba(108, 92, 231, 0.15);
+            --green: #00b894;
+            --green-soft: rgba(0, 184, 148, 0.15);
+            --orange: #fdcb6e;
+            --orange-soft: rgba(253, 203, 110, 0.15);
+            --red: #e17055;
+            --red-soft: rgba(225, 112, 85, 0.15);
+            --blue: #74b9ff;
+            --blue-soft: rgba(116, 185, 255, 0.15);
+            --radius: 12px;
+            --radius-sm: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            background: linear-gradient(135deg, #0f1117 0%, #1a1040 40%, #2d1b69 100%);
+            padding: 60px 40px 50px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(108, 92, 231, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #fff 0%, #a29bfe 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 24px;
+            color: var(--text-muted);
+            font-size: 14px;
+            flex-wrap: wrap;
+        }
+
+        /* ── Container ── */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* ── Section ── */
+        .section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .section-icon.blue {
+            background: var(--blue-soft);
+        }
+
+        .section-icon.green {
+            background: var(--green-soft);
+        }
+
+        .section-icon.orange {
+            background: var(--orange-soft);
+        }
+
+        .section-icon.red {
+            background: var(--red-soft);
+        }
+
+        .section-icon.accent {
+            background: var(--accent-soft);
+        }
+
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 20px 0 12px;
+            color: var(--text);
+        }
+
+        .section p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        /* ── Tables ── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin: 16px 0;
+        }
+
+        thead th {
+            text-align: left;
+            padding: 12px 16px;
+            background: var(--surface-2);
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        tbody td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+
+        tbody tr:hover {
+            background: rgba(108, 92, 231, 0.04);
+        }
+
+        .num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            font-weight: 500;
+        }
+
+        /* ── Badges ── */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .badge.green {
+            background: var(--green-soft);
+            color: var(--green);
+        }
+
+        .badge.orange {
+            background: var(--orange-soft);
+            color: var(--orange);
+        }
+
+        .badge.red {
+            background: var(--red-soft);
+            color: var(--red);
+        }
+
+        .badge.blue {
+            background: var(--blue-soft);
+            color: var(--blue);
+        }
+
+        .badge.accent {
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+
+        /* ── Split columns ── */
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        /* ── Comparison cards ── */
+        .compare-card {
+            border-radius: var(--radius);
+            padding: 28px;
+        }
+
+        .compare-card.old {
+            background: linear-gradient(135deg, rgba(225, 112, 85, 0.06) 0%, rgba(253, 203, 110, 0.06) 100%);
+            border: 1px solid rgba(225, 112, 85, 0.25);
+        }
+
+        .compare-card.new {
+            background: linear-gradient(135deg, rgba(0, 184, 148, 0.06) 0%, rgba(108, 92, 231, 0.06) 100%);
+            border: 1px solid rgba(0, 184, 148, 0.25);
+        }
+
+        .compare-card h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .compare-card.old h3 {
+            color: var(--orange);
+        }
+
+        .compare-card.new h3 {
+            color: var(--green);
+        }
+
+        .compare-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 13px;
+        }
+
+        .compare-item:last-child {
+            border-bottom: none;
+        }
+
+        .compare-label {
+            color: var(--text-muted);
+        }
+
+        .compare-val {
+            font-weight: 600;
+        }
+
+        /* ── Price highlight ── */
+        .price-big {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+
+        .price-big.red {
+            color: var(--red);
+        }
+
+        .price-big.green {
+            color: var(--green);
+        }
+
+        .price-old {
+            text-decoration: line-through;
+            opacity: 0.5;
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+        .price-sub {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* ── Progress bars ── */
+        .progress-row {
+            margin: 12px 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--surface-2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s;
+        }
+
+        .progress-fill.green {
+            background: linear-gradient(90deg, #00b894, #55efc4);
+        }
+
+        .progress-fill.accent {
+            background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+        }
+
+        /* ── Checklist ── */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* ── Verdict ── */
+        .verdict {
+            background: linear-gradient(135deg, rgba(0, 184, 148, 0.1) 0%, rgba(108, 92, 231, 0.1) 100%);
+            border: 1px solid rgba(0, 184, 148, 0.3);
+            border-radius: var(--radius);
+            padding: 32px;
+            text-align: center;
+            margin: 24px 0;
+        }
+
+        .verdict h2 {
+            color: var(--green);
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .verdict p {
+            font-size: 15px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ── KPI row ── */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .kpi-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .kpi-card .kpi-value {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 8px 0 4px;
+        }
+
+        .kpi-card .kpi-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .kpi-card .kpi-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 12px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        /* ── Value bar ── */
+        .value-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .value-row:last-child {
+            border-bottom: none;
+        }
+
+        .value-item {
+            flex: 1;
+            font-size: 14px;
+        }
+
+        .value-price {
+            font-weight: 700;
+            white-space: nowrap;
+            min-width: 100px;
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            color: var(--green);
+        }
+
+        @media (max-width: 768px) {
+            .split {
+                grid-template-columns: 1fr;
+            }
+
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                padding: 30px 20px;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .container {
+                padding: 20px 16px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: #111;
+            }
+
+            .hero {
+                background: #f8f9fa !important;
+            }
+
+            .hero h1 {
+                background: none;
+                -webkit-text-fill-color: #111;
+            }
+
+            .section,
+            .kpi-card {
+                border: 1px solid #ddd;
+                background: white;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════ HERO ═══════ -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">📋 Brief Comparativo</div>
+            <h1>Migrazione isoladiminorca.com</h1>
+            <div class="hero-meta">
+                <span>📅 23 febbraio 2026</span>
+                <span>🎯 Analisi approcci a confronto</span>
+                <span>💼 Sviluppo custom vs Page Builder</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- ═══════ CONTESTO ═══════ -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon accent">📌</div>
+                <h2>Contesto</h2>
+            </div>
+            <p style="font-size:15px; color: var(--text); max-width:900px;">
+                Il sito <strong>isoladiminorca.com</strong> necessita di una migrazione completa: nuovo template, nuovo
+                hosting, ristrutturazione URL per i CPT (città e spiagge), e preservazione di tutto il patrimonio SEO
+                accumulato in 16 mesi (<strong>253.000 click</strong> e <strong>14,2M impressioni</strong> su Google).
+            </p>
+            <p style="font-size:15px; color: var(--text); max-width:900px; margin-top:8px;">
+                È stata ricevuta una proposta esterna basata su <strong>Elementor Pro</strong>. Questo documento
+                confronta tale proposta con l'approccio di <strong>sviluppo custom</strong> attualmente in corso, in
+                termini di qualità tecnica, performance, costi e indipendenza a lungo termine.
+            </p>
+        </div>
+
+        <!-- ═══════ CONFRONTO SIDE BY SIDE ═══════ -->
+        <div class="split">
+            <div class="compare-card old">
+                <h3>🔶 Proposta Elementor Pro</h3>
+                <p style="font-size:13px; color: var(--text-muted); margin-bottom:16px;">Preventivo ricevuto — page
+                    builder visuale</p>
+                <div class="compare-item"><span class="compare-label">Tecnologia</span><span
+                        class="compare-val">Elementor Pro</span></div>
+                <div class="compare-item"><span class="compare-label">Approccio</span><span class="compare-val">Drag &
+                        Drop</span></div>
+                <div class="compare-item"><span class="compare-label">Architettura dati</span><span
+                        class="compare-val">Pagine generiche</span></div>
+                <div class="compare-item"><span class="compare-label">Peso CSS/JS aggiuntivo</span><span
+                        class="compare-val" style="color:var(--red);">300-500 KB</span></div>
+                <div class="compare-item"><span class="compare-label">Plugin necessari</span><span class="compare-val"
+                        style="color:var(--orange);">10-15</span></div>
+                <div class="compare-item"><span class="compare-label">Licenze annuali</span><span class="compare-val"
+                        style="color:var(--orange);">~€60/anno</span></div>
+                <div class="compare-item"><span class="compare-label">Lock-in</span><span class="compare-val"
+                        style="color:var(--red);">Alto</span></div>
+                <div class="compare-item"><span class="compare-label">Struttura URL SEO</span><span class="compare-val"
+                        style="color:var(--orange);">Manuale</span></div>
+                <div class="compare-item"><span class="compare-label">Hosting</span><span class="compare-val">Server
+                        proprietario</span></div>
+            </div>
+
+            <div class="compare-card new">
+                <h3>🟢 Sviluppo Custom</h3>
+                <p style="font-size:13px; color: var(--text-muted); margin-bottom:16px;">Approccio in corso — tema
+                    WordPress nativo</p>
+                <div class="compare-item"><span class="compare-label">Tecnologia</span><span class="compare-val"
+                        style="color:var(--green);">Block Theme (FSE)</span></div>
+                <div class="compare-item"><span class="compare-label">Approccio</span><span class="compare-val"
+                        style="color:var(--green);">Codice su misura</span></div>
+                <div class="compare-item"><span class="compare-label">Architettura dati</span><span class="compare-val"
+                        style="color:var(--green);">CPT dedicati</span></div>
+                <div class="compare-item"><span class="compare-label">Peso CSS/JS aggiuntivo</span><span
+                        class="compare-val" style="color:var(--green);">0 KB</span></div>
+                <div class="compare-item"><span class="compare-label">Plugin necessari</span><span class="compare-val"
+                        style="color:var(--green);">2-3</span></div>
+                <div class="compare-item"><span class="compare-label">Licenze annuali</span><span class="compare-val"
+                        style="color:var(--green);">€0</span></div>
+                <div class="compare-item"><span class="compare-label">Lock-in</span><span class="compare-val"
+                        style="color:var(--green);">Zero</span></div>
+                <div class="compare-item"><span class="compare-label">Struttura URL SEO</span><span class="compare-val"
+                        style="color:var(--green);">Slug Match automatico</span></div>
+                <div class="compare-item"><span class="compare-label">Hosting</span><span class="compare-val"
+                        style="color:var(--green);">Libero (qualsiasi)</span></div>
+            </div>
+        </div>
+
+        <!-- ═══════ PERFORMANCE ═══════ -->
+        <div class="section" style="margin-top:24px;">
+            <div class="section-header">
+                <div class="section-icon green">⚡</div>
+                <h2>Impatto sulle performance</h2>
+            </div>
+            <p>Con l'80% del traffico da mobile, la velocità di caricamento incide direttamente sul ranking Google (Core
+                Web Vitals).</p>
+
+            <div style="margin-top:20px;">
+                <h3>Tema Custom (Block Theme)</h3>
+                <div class="progress-row">
+                    <div class="progress-label"><span>Largest Contentful Paint (LCP)</span><span
+                            style="color:var(--green);font-weight:600;">
+                            < 1.5s</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill green" style="width:95%;"></div>
+                    </div>
+                </div>
+                <div class="progress-row">
+                    <div class="progress-label"><span>Total Blocking Time (TBT)</span><span
+                            style="color:var(--green);font-weight:600;">
+                            < 50ms</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill green" style="width:98%;"></div>
+                    </div>
+                </div>
+                <div class="progress-row">
+                    <div class="progress-label"><span>PageSpeed Score (stimato)</span><span
+                            style="color:var(--green);font-weight:600;">90-100</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill green" style="width:95%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:24px;">
+                <h3>Elementor Pro (page builder)</h3>
+                <div class="progress-row">
+                    <div class="progress-label"><span>Largest Contentful Paint (LCP)</span><span
+                            style="color:var(--orange);font-weight:600;">2.5-4s</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"
+                            style="width:55%;background:linear-gradient(90deg,var(--orange),var(--red));"></div>
+                    </div>
+                </div>
+                <div class="progress-row">
+                    <div class="progress-label"><span>Total Blocking Time (TBT)</span><span
+                            style="color:var(--orange);font-weight:600;">200-400ms</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"
+                            style="width:40%;background:linear-gradient(90deg,var(--orange),var(--red));"></div>
+                    </div>
+                </div>
+                <div class="progress-row">
+                    <div class="progress-label"><span>PageSpeed Score (tipico)</span><span
+                            style="color:var(--orange);font-weight:600;">50-70</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"
+                            style="width:60%;background:linear-gradient(90deg,var(--orange),var(--red));"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                style="margin-top:20px; padding:16px; background:var(--bg); border-radius:var(--radius-sm); border:1px solid var(--border);">
+                <p style="font-size:13px; color:var(--text-muted); margin:0;">
+                    <strong style="color:var(--orange);">⚠️ Nota:</strong> Elementor inietta CSS inline, carica librerie
+                    come Swiper.js e Font Awesome anche nelle pagine che non le usano, e genera HTML con 5-8 livelli di
+                    <code>div</code> annidati. Questo rallenta il rendering e penalizza i Core Web Vitals — il fattore
+                    di ranking Google più critico nel 2026.
+                </p>
+            </div>
+        </div>
+
+        <!-- ═══════ ARCHITETTURA SEO ═══════ -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon blue">🏗️</div>
+                <h2>Architettura SEO: Elementor vs Custom</h2>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspetto</th>
+                        <th>Elementor Pro</th>
+                        <th>Sviluppo Custom</th>
+                        <th>Impatto SEO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Struttura URL</td>
+                        <td>Pagine WordPress standard</td>
+                        <td style="color:var(--green);">CPT con slug match automatico</td>
+                        <td><span class="badge green">Critico</span></td>
+                    </tr>
+                    <tr>
+                        <td>HTML semantico</td>
+                        <td style="color:var(--orange);">Div generici Elementor</td>
+                        <td style="color:var(--green);">Header, article, section nativi</td>
+                        <td><span class="badge orange">Alto</span></td>
+                    </tr>
+                    <tr>
+                        <td>Schema markup</td>
+                        <td>Via plugin aggiuntivo</td>
+                        <td style="color:var(--green);">Integrato nel template</td>
+                        <td><span class="badge blue">Medio</span></td>
+                    </tr>
+                    <tr>
+                        <td>Redirect 301 mapping</td>
+                        <td style="color:var(--orange);">Manuale, uno per uno</td>
+                        <td style="color:var(--green);">Mappatura automatica da audit GSC</td>
+                        <td><span class="badge green">Critico</span></td>
+                    </tr>
+                    <tr>
+                        <td>Gestione multilingua</td>
+                        <td>Plugin terzo (WPML ~€49/anno)</td>
+                        <td style="color:var(--green);">Struttura nativa, qualsiasi plugin</td>
+                        <td><span class="badge orange">Alto</span></td>
+                    </tr>
+                    <tr>
+                        <td>Codice di terze parti</td>
+                        <td style="color:var(--red);">300-500 KB CSS/JS Elementor</td>
+                        <td style="color:var(--green);">0 KB aggiuntivi</td>
+                        <td><span class="badge green">Critico</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ═══════ STIMA COSTI ═══════ -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon orange">💰</div>
+                <h2>Confronto costi</h2>
+            </div>
+
+            <div class="split" style="margin-bottom:24px;">
+                <div style="text-align:center; padding:24px;">
+                    <div
+                        style="font-size:13px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; font-weight:600;">
+                        Proposta Elementor</div>
+                    <div class="price-big red" style="margin:12px 0;">€3.400</div>
+                    <div class="price-sub">Template (€2.300) + Migrazione (€700) + Hosting (€400)</div>
+                    <div class="price-sub" style="margin-top:8px; color:var(--orange);">+ €460/anno ricorrenti (hosting
+                        + licenza Elementor)</div>
+                </div>
+                <div style="text-align:center; padding:24px;">
+                    <div
+                        style="font-size:13px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; font-weight:600;">
+                        Valore Sviluppo Custom</div>
+                    <div class="price-big green" style="margin:12px 0;">€6.800</div>
+                    <div class="price-sub">Valore di mercato dei deliverable prodotti</div>
+                    <div class="price-sub" style="margin-top:8px; color:var(--green);">+ €70-120/anno hosting (libera
+                        scelta)</div>
+                </div>
+            </div>
+
+            <h3>Dettaglio valore di mercato — Sviluppo Custom</h3>
+            <p>Prezzi riferiti al mercato freelance italiano per sviluppo WordPress custom professionale.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Deliverable</th>
+                        <th>Descrizione</th>
+                        <th class="num">Valore</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Tema WordPress Block Theme custom</strong></td>
+                        <td>Template responsive, dark mode ready, design premium, zero page builder</td>
+                        <td class="num" style="color:var(--green);">€3.000</td>
+                        <td><span class="badge green">In corso</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Architettura CPT su misura</strong></td>
+                        <td>Custom Post Types con ACF: Città, Spiagge, con tassonomie dedicate</td>
+                        <td class="num" style="color:var(--green);">€800</td>
+                        <td><span class="badge green">Completato ✅</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sistema Gallery personalizzato</strong></td>
+                        <td>Metabox gallery con layout multipli (grid, masonry, slider), zero plugin</td>
+                        <td class="num" style="color:var(--green);">€500</td>
+                        <td><span class="badge green">Completato ✅</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>SEO Migration Audit</strong></td>
+                        <td>Analisi completa 1000 URL + 1000 keyword GSC, report interattivo </td>
+                        <td class="num" style="color:var(--green);">€1.000</td>
+                        <td><span class="badge green">Completato ✅</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Strategia redirect 301</strong></td>
+                        <td>Mappatura 74 spiagge + 15 città, slug match verificato, piano redirect</td>
+                        <td class="num" style="color:var(--green);">€500</td>
+                        <td><span class="badge green">Completato ✅</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Script migrazione contenuti</strong></td>
+                        <td>Automazione import articoli via REST API con preservazione metadata</td>
+                        <td class="num" style="color:var(--green);">€600</td>
+                        <td><span class="badge accent">In sviluppo</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Deploy e go-live</strong></td>
+                        <td>Migrazione finale con Duplicator, DNS, SSL, flush, verifica completa</td>
+                        <td class="num" style="color:var(--green);">€400</td>
+                        <td><span class="badge blue">Pianificato</span></td>
+                    </tr>
+                    <tr style="background: var(--green-soft);">
+                        <td colspan="2" style="font-weight:700; font-size:15px;">TOTALE VALORE DI MERCATO</td>
+                        <td class="num" style="font-weight:800; font-size:18px; color:var(--green);">€6.800</td>
+                        <td><span class="badge green">2x la proposta Elementor</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ═══════ COSTO TOTALE DI PROPRIETÀ ═══════ -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon red">📈</div>
+                <h2>TCO — Costo totale di proprietà (3 anni)</h2>
+            </div>
+            <p>Il vero costo si misura nel tempo. Elementor richiede rinnovi annuali e vincola al fornitore di hosting.
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Voce</th>
+                        <th class="num">Elementor (3 anni)</th>
+                        <th class="num">Custom (3 anni)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Setup iniziale</td>
+                        <td class="num">€3.000</td>
+                        <td class="num" style="color:var(--green);">€0 *</td>
+                    </tr>
+                    <tr>
+                        <td>Hosting (3 anni × costo annuo)</td>
+                        <td class="num">€1.200</td>
+                        <td class="num" style="color:var(--green);">€240 — €360</td>
+                    </tr>
+                    <tr>
+                        <td>Licenza Elementor Pro (3 anni)</td>
+                        <td class="num">€180</td>
+                        <td class="num" style="color:var(--green);">€0</td>
+                    </tr>
+                    <tr>
+                        <td>Plugin premium (WPML, tema, ecc.)</td>
+                        <td class="num">€150 — €300</td>
+                        <td class="num" style="color:var(--green);">€0</td>
+                    </tr>
+                    <tr>
+                        <td>Rischio cambio template</td>
+                        <td class="num" style="color:var(--red);">Rifacimento totale</td>
+                        <td class="num" style="color:var(--green);">Evoluzione graduale</td>
+                    </tr>
+                    <tr style="background: var(--surface-2);">
+                        <td style="font-weight:700;">TOTALE 3 ANNI</td>
+                        <td class="num" style="font-weight:800; font-size:16px; color:var(--red);">€4.530 — €4.680</td>
+                        <td class="num" style="font-weight:800; font-size:16px; color:var(--green);">€240 — €360</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top:12px; font-size:12px; color:var(--text-muted);">* Lo sviluppo custom è gestito
+                internamente. Il costo in tabella riflette solo le spese vive.</p>
+        </div>
+
+        <!-- ═══════ COSA È GIÀ STATO FATTO ═══════ -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon green">✅</div>
+                <h2>Stato attuale del progetto</h2>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label">Template</div>
+                    <div class="kpi-value" style="color:var(--green);">70%</div>
+                    <div class="kpi-sub">Design + CPT + Gallery</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Audit SEO</div>
+                    <div class="kpi-value" style="color:var(--green);">100%</div>
+                    <div class="kpi-sub">1000 URL + 1000 KW</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Redirect map</div>
+                    <div class="kpi-value" style="color:var(--green);">100%</div>
+                    <div class="kpi-sub">89 URL mappati</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Migrazione</div>
+                    <div class="kpi-value" style="color:var(--accent);">30%</div>
+                    <div class="kpi-sub">Script + strategia</div>
+                </div>
+            </div>
+
+            <ul class="checklist">
+                <li><span class="check-icon">✅</span> <strong>Tema Block Theme</strong> — struttura base, homepage,
+                    header, footer, responsive</li>
+                <li><span class="check-icon">✅</span> <strong>CPT Città</strong> — slug match
+                    <code>/cosa-vedere/</code>, template single con ACF</li>
+                <li><span class="check-icon">✅</span> <strong>CPT Spiagge</strong> — slug match <code>/spiagge/</code>,
+                    archivio preservato</li>
+                <li><span class="check-icon">✅</span> <strong>Gallery system</strong> — metabox custom con layout
+                    grid/masonry/slider</li>
+                <li><span class="check-icon">✅</span> <strong>SEO Audit interattivo</strong> — report consultabile con
+                    tutti i dati GSC</li>
+                <li><span class="check-icon">✅</span> <strong>Redirect strategy</strong> — 74 spiagge + 15 città mappati
+                    con stato migrazione</li>
+                <li><span class="check-icon">🔄</span> <strong>Migrazione contenuti</strong> — script automatizzato per
+                    import articoli</li>
+                <li><span class="check-icon">📋</span> <strong>Deploy produzione</strong> — Duplicator + DNS + SSL +
+                    verifica post-migrazione</li>
+            </ul>
+        </div>
+
+        <!-- ═══════ ROADMAP ═══════ -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon accent">🗺️</div>
+                <h2>Roadmap alla produzione</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fase</th>
+                        <th>Attività</th>
+                        <th>Durata stimata</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge green">1</span></td>
+                        <td>Completamento template (pagine single, archivi, blog)</td>
+                        <td class="num">3-5 giorni</td>
+                        <td><span class="badge accent">In corso</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge green">2</span></td>
+                        <td>Import contenuti dal sito vecchio (XML + REST API)</td>
+                        <td class="num">1-2 giorni</td>
+                        <td><span class="badge blue">Pianificato</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge green">3</span></td>
+                        <td>Configurazione redirect 301 (Rank Math)</td>
+                        <td class="num">1 giorno</td>
+                        <td><span class="badge blue">Pianificato</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge green">4</span></td>
+                        <td>Test completo in locale + staging</td>
+                        <td class="num">1-2 giorni</td>
+                        <td><span class="badge blue">Pianificato</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge green">5</span></td>
+                        <td>Deploy su hosting produzione + go-live</td>
+                        <td class="num">1 giorno</td>
+                        <td><span class="badge blue">Pianificato</span></td>
+                    </tr>
+                    <tr style="background:var(--accent-soft);">
+                        <td></td>
+                        <td style="font-weight:700;">TOTALE</td>
+                        <td class="num" style="font-weight:700;">7-11 giorni</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ═══════ VERDETTO ═══════ -->
+        <div class="verdict">
+            <h2>🏆 Conclusione</h2>
+            <p style="color:var(--text);">
+                Lo sviluppo custom produce un sito <strong>più veloce</strong>, <strong>più leggero</strong>,
+                <strong>senza lock-in</strong> e con una strategia SEO basata su <strong>dati reali</strong>. Il valore
+                di mercato dei deliverable già prodotti supera il doppio del preventivo Elementor, con un TCO a 3 anni
+                <strong>10 volte inferiore</strong>.
+            </p>
+            <div style="margin-top:20px; display:flex; justify-content:center; gap:32px; flex-wrap:wrap;">
+                <div style="text-align:center;">
+                    <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">
+                        Performance</div>
+                    <div style="font-size:28px; font-weight:800; color:var(--green); margin-top:4px;">3-5× più veloce
+                    </div>
+                </div>
+                <div style="text-align:center;">
+                    <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">
+                        Costi ricorrenti</div>
+                    <div style="font-size:28px; font-weight:800; color:var(--green); margin-top:4px;">€0 licenze</div>
+                </div>
+                <div style="text-align:center;">
+                    <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">
+                        Lock-in</div>
+                    <div style="font-size:28px; font-weight:800; color:var(--green); margin-top:4px;">Zero</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════ RISORSE ═══════ -->
+        <div class="section"
+            style="background: linear-gradient(135deg, rgba(66,133,244,0.08) 0%, rgba(108,92,231,0.08) 100%); border-color: rgba(66,133,244,0.3);">
+            <div class="section-header" style="border-bottom-color: rgba(66,133,244,0.2);">
+                <div class="section-icon" style="background: rgba(66,133,244,0.15);">📁</div>
+                <h2>Documenti correlati</h2>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                <a href="https://devdomenicotatone.github.io/seo-audit-idm/" target="_blank" rel="noopener"
+                    style="flex:1;min-width:280px;display:flex;align-items:center;gap:12px;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);text-decoration:none;color:var(--text);transition:border-color 0.2s;"
+                    onmouseover="this.style.borderColor='var(--accent)'"
+                    onmouseout="this.style.borderColor='var(--border)'">
+                    <span style="font-size:24px;">📊</span>
+                    <div>
+                        <div style="font-weight:600;font-size:14px;">SEO Migration Audit</div>
+                        <div style="font-size:12px;color:var(--text-muted);">Report interattivo con tutti i dati GSC
+                        </div>
+                    </div>
+                    <span style="margin-left:auto;color:var(--accent);font-size:12px;font-weight:600;">Apri ↗</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1Tgums9LVjZ2MQrhGOrxUoiMDhnc36j-o?usp=sharing"
+                    target="_blank" rel="noopener"
+                    style="flex:1;min-width:280px;display:flex;align-items:center;gap:12px;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);text-decoration:none;color:var(--text);transition:border-color 0.2s;"
+                    onmouseover="this.style.borderColor='#4285f4'" onmouseout="this.style.borderColor='var(--border)'">
+                    <span style="font-size:24px;">📂</span>
+                    <div>
+                        <div style="font-weight:600;font-size:14px;">Google Drive</div>
+                        <div style="font-size:12px;color:var(--text-muted);">Cartella condivisa documenti progetto</div>
+                    </div>
+                    <span style="margin-left:auto;color:#4285f4;font-size:12px;font-weight:600;">Apri ↗</span>
+                </a>
+            </div>
+        </div>
+
+    </div><!-- /container -->
+
+    <div class="footer">
+        <p>Brief Comparativo — Migrazione isoladiminorca.com — 23 febbraio 2026</p>
+        <p style="margin-top:4px;">Documento riservato · Uso interno</p>
+    </div>
+
+</body>
+
+</html>
